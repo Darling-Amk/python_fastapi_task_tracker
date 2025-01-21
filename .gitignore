@@ -1,0 +1,62 @@
+# Python
+*.py[cod]
+__pycache__/
+*.so
+*.pyd
+*.log
+*.sqlite3
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+
+# Pytest
+.cache/
+.pytest_cache/
+
+# MyPy и другие статические анализаторы
+.mypy_cache/
+.dmypy.json
+.dmypy.json.5
+ruff_cache/
+
+# Docker
+*.env
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# Утилиты
+*.lock
+*.bak
+*.tmp
+*.temp
+*.backup
+
+# OS/Filesystem
+.DS_Store
+Thumbs.db
+
+# PyInstaller
+*.spec
+dist/
+build/
+
+# Logs и отладка
+logs/
+*.log
+
+# Общие настройки
+*.env
+.env.*

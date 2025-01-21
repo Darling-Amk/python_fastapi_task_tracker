@@ -1,0 +1,27 @@
+# Зависимости Python 3.11
+
+# Основные зависимости для FastAPI
+fastapi>=0.115
+uvicorn[standard]>=0.34
+python-dotenv>=1.0
+
+# Асинхронность и обработка событий
+anyio>=4.8
+uvloop>=0.21
+watchfiles>=1.0
+
+# База данных
+SQLAlchemy>=2.0
+psycopg2-binary>=2.9
+asyncpg>=0.30.0
+
+# Тестирование
+pytest>=8.3
+pytest-asyncio>=0.25
+
+# Вспомогательные библиотеки
+PyYAML>=6.0
+pydantic>=2.10
+pydantic[email]
+typing_extensions>=4.12
+pydantic_settings
