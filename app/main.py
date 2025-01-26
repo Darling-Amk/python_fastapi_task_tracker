@@ -11,7 +11,6 @@ app: FastAPI = FastAPI(
     debug=app_config.debug, title=app_config.project_name, lifespan=lifespan
 )
 
-
 setup_middlewares(app)
 setup_handlers(app)
 app.include_router(app_router, prefix="/api")
