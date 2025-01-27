@@ -1,23 +1,16 @@
 # app/models.py
-import enum
 from datetime import UTC, datetime
 
-from sqlalchemy import Column, Date, DateTime, ForeignKey, Integer, String
+from sqlalchemy import Column, Date, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.api.models.task_status import TaskStatus
 from app.api.schemas.project_schema import ProjectRead
-from app.api.schemas.projects_users_schems import ProjectUserRead
+from app.api.schemas.task import TaskRead
 from app.api.schemas.user_schema import UserRead
 
 Base = declarative_base()
-
-
-# Enum для статуса задачи
-class TaskStatus(str, enum.Enum):
-    TODO = "Todo"
-    IN_PROGRESS = "In Progress"
-    DONE = "Done"
 
 
 # Модель пользователя
@@ -68,12 +61,24 @@ class Task(Base):
     status: Mapped[TaskStatus] = mapped_column(default=TaskStatus.TODO)
     due_date = Column(Date)
     created_at = Column(DateTime, default=datetime.now(UTC))
-    project_id = Column(Integer, ForeignKey("projects.id"))
+    project_id: Mapped[int] = mapped_column(ForeignKey("projects.id"))
     assigned_user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
 
     project = relationship("Project", back_populates="tasks")
     assigned_user = relationship("User")
 
+
+    def to_read_model(self):
+        return TaskRead(
+            id=self.id,
+            title=self.title,
+            description=self.description,
+            status=self.status,
+            due_date=self.due_date,
+            created_at=self.created_at,
+            project_id=self.project_id,
+            assigned_user_id=self.assigned_user_id,
+        )
 
 # Таблица для связки пользователей и проектов (многие ко многим)
 class UserProjects(Base):

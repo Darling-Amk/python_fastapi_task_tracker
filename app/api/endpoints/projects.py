@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 
-from app.api.schemas.project_schema import ProjectRead, ProjectCreate, ProjectUpdate
+from app.api.schemas.project_schema import (ProjectCreate, ProjectRead,
+                                            ProjectUpdate)
 from app.core.dependencies import get_project_service
 from app.services import ProjectService
 

@@ -1,11 +1,11 @@
-from app.api.exceptions import (
-    ProjectConnectionNotFoundError,
-    ProjectConnectionAlreadyExist,
-)
+from app.api.exceptions import (ProjectConnectionAlreadyExist,
+                                ProjectConnectionNotFoundError)
 from app.api.schemas.project_schema import ProjectRead
-from app.api.schemas.projects_users_schems import ProjectUserRead, UserProjectsRead
+from app.api.schemas.projects_users_schems import (ProjectUserRead,
+                                                   UserProjectsRead)
 from app.api.schemas.user_schema import UserRead
-from app.repositories.project_management_repository import ProjectManagementRepository
+from app.repositories.project_management_repository import \
+    ProjectManagementRepository
 from app.services import ProjectService, UserService
 
 

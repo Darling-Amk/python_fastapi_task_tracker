@@ -1,12 +1,9 @@
 from app.api.exceptions import UserAlreadyExistsError
+from app.api.schemas.user_schema import (UserCreate,
+                                         UserCreateWithPasswordHash, UserRead,
+                                         UserUpdate,
+                                         UserUpdateWithPasswordHash)
 from app.repositories import UserRepository
-from app.api.schemas.user_schema import (
-    UserCreate,
-    UserCreateWithPasswordHash,
-    UserRead,
-    UserUpdate,
-    UserUpdateWithPasswordHash,
-)
 
 
 class UserService:

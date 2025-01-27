@@ -1,9 +1,7 @@
 from app.api.exceptions import ProjectNotFoundError, UserNotFoundError
 from app.api.schemas.project_schema import ProjectRead
-from app.api.schemas.user_schema import (
-    UserRead,
-)
-from app.repositories import UserRepository, ProjectRepository
+from app.api.schemas.user_schema import UserRead
+from app.repositories import ProjectRepository, UserRepository
 from app.repositories.project_user_repository import ProjectUserRepository
 from app.services import ProjectService, UserService
 

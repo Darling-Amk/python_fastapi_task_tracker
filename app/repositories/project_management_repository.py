@@ -1,11 +1,9 @@
-from sqlalchemy import select, delete
+from sqlalchemy import delete, select
 
 from app.api.models import UserProjects
 from app.api.schemas.project_schema import ProjectRead
-from app.api.schemas.projects_users_schems import (
-    ProjectUserCreate,
-    ProjectUserRead,
-)
+from app.api.schemas.projects_users_schems import (ProjectUserCreate,
+                                                   ProjectUserRead)
 from app.api.schemas.user_schema import UserRead
 from app.db import async_session
 from app.repositories.base import SQLAlchemyRepository

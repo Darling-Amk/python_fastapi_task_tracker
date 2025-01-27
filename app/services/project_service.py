@@ -1,5 +1,6 @@
 from app.api.exceptions import ProjectNotFoundError
-from app.api.schemas.project_schema import ProjectCreate, ProjectRead, ProjectUpdate
+from app.api.schemas.project_schema import (ProjectCreate, ProjectRead,
+                                            ProjectUpdate)
 from app.repositories import ProjectRepository
 
 

@@ -20,5 +20,4 @@ if __name__ == "__main__":
         "main:app",
         host=app_config.project_host,
         port=app_config.project_port,
-        reload=True,  # для разработки
     )

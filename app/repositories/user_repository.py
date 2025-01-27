@@ -3,11 +3,8 @@ from sqlalchemy import select
 
 from app.api.exceptions import UserNotFoundError
 from app.api.models import User
-from app.api.schemas.user_schema import (
-    UserCreateWithPasswordHash,
-    UserRead,
-    UserUpdateWithPasswordHash,
-)
+from app.api.schemas.user_schema import (UserCreateWithPasswordHash, UserRead,
+                                         UserUpdateWithPasswordHash)
 from app.db import async_session
 from app.repositories.base import SQLAlchemyRepository
 
