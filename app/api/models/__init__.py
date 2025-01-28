@@ -19,7 +19,7 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     email: Mapped[str] = mapped_column(unique=True, index=True)
-    password_hash: Mapped[str] = mapped_column()
+    password_hash: Mapped[bytes] = mapped_column()
     name: Mapped[str] = mapped_column()
 
     projects = relationship(
@@ -67,7 +67,6 @@ class Task(Base):
     project = relationship("Project", back_populates="tasks")
     assigned_user = relationship("User")
 
-
     def to_read_model(self):
         return TaskRead(
             id=self.id,
@@ -79,6 +78,7 @@ class Task(Base):
             project_id=self.project_id,
             assigned_user_id=self.assigned_user_id,
         )
+
 
 # Таблица для связки пользователей и проектов (многие ко многим)
 class UserProjects(Base):

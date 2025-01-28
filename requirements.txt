@@ -24,4 +24,8 @@ pydantic>=2.10
 pydantic[email]
 typing_extensions>=4.12
 pydantic_settings
-pyjwt[crypto]
+pyjwt[crypto]>=2.10.1
+
+pydantic-settings>=2.7.1
+pydantic_core>=2.27.2
+bcrypt>=4.2.1

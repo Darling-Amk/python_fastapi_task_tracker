@@ -23,6 +23,14 @@
 ...
 
 # Развертывание / Установка:
+## JWT
+> cd /api/auth/certs
+1. Генерация приватного ключа
+    > openssl genrsa -out private.pem 2048
+2. Выпуск публичного ключа
+    > openssl rsa -in private.pem -outform PEM -pubout -out public.pem
+
+## Файл переменного окружения
 ```.env
 ENVIRONMENT="TEST"
 
