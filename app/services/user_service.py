@@ -1,8 +1,10 @@
+from pydantic import EmailStr
+
 from app.api.exceptions import UserAlreadyExistsError
 from app.api.schemas.user_schema import UserCreate, UserRead, UserUpdate
 from app.repositories.user_repository import UserRepository
 
-from app.services.password_service import PasswordService
+from app.auth.services.password_service import PasswordService
 
 
 class UserService:

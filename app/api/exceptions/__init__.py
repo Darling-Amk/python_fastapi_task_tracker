@@ -1,13 +1,15 @@
 from fastapi import FastAPI
 
+from app.api.exceptions.auth_errors import InvalidAuthError
 from app.api.exceptions.base import AppError
 from app.api.exceptions.handlers import http_base_exception_handler
 from app.api.exceptions.project_errors import ProjectNotFoundError
 from app.api.exceptions.project_manegment_errors import (
-    ProjectConnectionAlreadyExist, ProjectConnectionNotFoundError)
+    ProjectConnectionAlreadyExist,
+    ProjectConnectionNotFoundError,
+)
 from app.api.exceptions.task_errors import TaskNotFoundError
-from app.api.exceptions.user_errors import (UserAlreadyExistsError,
-                                            UserNotFoundError)
+from app.api.exceptions.user_errors import UserAlreadyExistsError, UserNotFoundError
 
 exceptions_and_handlers = {
     UserAlreadyExistsError: http_base_exception_handler,
@@ -16,6 +18,7 @@ exceptions_and_handlers = {
     ProjectConnectionNotFoundError: http_base_exception_handler,
     ProjectConnectionAlreadyExist: http_base_exception_handler,
     TaskNotFoundError: http_base_exception_handler,
+    InvalidAuthError: http_base_exception_handler,
 }
 
 

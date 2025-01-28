@@ -5,7 +5,7 @@ from app.api.endpoints import auth, project_managment, projects, tasks, users
 app_router = APIRouter()
 
 # Подключение маршрутов
-# app_router.include_router(auth.router, prefix="/auth", tags=["Auth"])
+app_router.include_router(auth.router, prefix="/auth", tags=["Auth"])
 app_router.include_router(
     project_managment.router, prefix="/project_management", tags=["Project Management"]
 )

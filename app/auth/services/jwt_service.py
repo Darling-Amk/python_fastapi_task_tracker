@@ -1,3 +1,4 @@
+import datetime
 from typing import Any, Dict
 
 import jwt
@@ -12,11 +13,10 @@ class AuthJWTService:
 
     def __init__(self):
         """Инициализация сервиса с загрузкой ключей и алгоритма шифрования."""
-        private_key_path = app_config.auth_jwt.private_key_path
-        public_key_path = app_config.auth_jwt.public_key_path
-        self._private_key = private_key_path.read_text() if private_key_path else None
-        self._public_key = public_key_path.read_text() if public_key_path else None
-        self._algorithm = app_config.auth_jwt.algorithm
+        self.__private_key: str = app_config.auth_jwt.private_key_path.read_text()
+        self._public_key: str = app_config.auth_jwt.public_key_path.read_text()
+        self._algorithm: str = app_config.auth_jwt.algorithm
+        self._expire_minutes: int = app_config.auth_jwt.expire_minutes
 
     def encode_jwt(self, payload: Dict[str, Any]) -> str:
         """
@@ -28,10 +28,14 @@ class AuthJWTService:
         Returns:
             str: Сформированный JWT-токен.
         """
-        if not self._private_key or not self._algorithm:
+        now = datetime.datetime.now(datetime.UTC)
+        payload.update(
+            exp=now + datetime.timedelta(minutes=self._expire_minutes), iat=now
+        )
+        if not self.__private_key or not self._algorithm:
             raise ValueError("Private key or algorithm is not defined.")
         return jwt.encode(
-            payload=payload, key=self._private_key, algorithm=self._algorithm
+            payload=payload, key=self.__private_key, algorithm=self._algorithm
         )
 
     def decode_jwt(self, jwt_code: str) -> Dict[str, Any]:

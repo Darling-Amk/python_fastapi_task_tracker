@@ -61,7 +61,9 @@ class Task(Base):
     status: Mapped[TaskStatus] = mapped_column(default=TaskStatus.TODO)
     due_date = Column(Date)
     created_at = Column(DateTime, default=datetime.now(UTC))
-    project_id: Mapped[int] = mapped_column(ForeignKey("projects.id"))
+    project_id: Mapped[int] = mapped_column(
+        ForeignKey("projects.id", ondelete="CASCADE")
+    )
     assigned_user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
 
     project = relationship("Project", back_populates="tasks")
@@ -84,5 +86,9 @@ class Task(Base):
 class UserProjects(Base):
     __tablename__ = "user_projects"
 
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), primary_key=True)
-    project_id: Mapped[int] = mapped_column(ForeignKey("projects.id"), primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), primary_key=True
+    )
+    project_id: Mapped[int] = mapped_column(
+        ForeignKey("projects.id", ondelete="CASCADE"), primary_key=True
+    )
