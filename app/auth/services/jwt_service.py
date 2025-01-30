@@ -23,8 +23,6 @@ class AuthJWTService:
         Кодирование данных в JWT-токен.
         Args:
             payload: Данные для кодирования.
-        Raises:
-            ValueError: Если ключ или алгоритм не определены.
         Returns:
             str: Сформированный JWT-токен.
         """
@@ -32,8 +30,6 @@ class AuthJWTService:
         payload.update(
             exp=now + datetime.timedelta(minutes=self._expire_minutes), iat=now
         )
-        if not self.__private_key or not self._algorithm:
-            raise ValueError("Private key or algorithm is not defined.")
         return jwt.encode(
             payload=payload, key=self.__private_key, algorithm=self._algorithm
         )
@@ -43,11 +39,9 @@ class AuthJWTService:
         Декодирование JWT-токена.
         Args:
             jwt_code: Кодированный JWT-токен.
-        Raises:
-            ValueError: Если публичный ключ или алгоритм не определены.
         Returns:
             Dict[str, Any]: Декодированные данные.
         """
-        if not self._public_key or not self._algorithm:
-            raise ValueError("Public key or algorithm is not defined.")
-        return jwt.decode(jwt=jwt_code, key=self._public_key, algorithm=self._algorithm)
+        return jwt.decode(
+            jwt=jwt_code, key=self._public_key, algorithms=[self._algorithm]
+        )

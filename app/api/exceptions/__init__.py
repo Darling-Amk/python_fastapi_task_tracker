@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 
-from app.api.exceptions.auth_errors import InvalidAuthError
+from app.api.exceptions.auth_errors import (
+    InvalidAuthError,
+    InvalidJWTPayloadError,
+    InvalidJWTError,
+)
 from app.api.exceptions.base import AppError
 from app.api.exceptions.handlers import http_base_exception_handler
 from app.api.exceptions.project_errors import ProjectNotFoundError
@@ -19,6 +23,8 @@ exceptions_and_handlers = {
     ProjectConnectionAlreadyExist: http_base_exception_handler,
     TaskNotFoundError: http_base_exception_handler,
     InvalidAuthError: http_base_exception_handler,
+    InvalidJWTPayloadError: http_base_exception_handler,
+    InvalidJWTError: http_base_exception_handler,
 }
 
 
