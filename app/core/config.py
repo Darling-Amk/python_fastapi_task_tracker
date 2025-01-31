@@ -25,6 +25,7 @@ class AuthJWT(BaseModel):
     public_key_path: Path = BASE_DIR / "auth" / "certs" / "public.pem"
     algorithm: str = "RS256"
     expire_minutes: int = 15
+    token_url: str = "/api/auth/login"
 
 
 class PG(DB):

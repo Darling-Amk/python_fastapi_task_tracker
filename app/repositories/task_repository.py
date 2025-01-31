@@ -1,4 +1,4 @@
-from app.api.models import Task
+from app.api.models.task import Task
 from app.api.schemas.task import TaskCreate, TaskRead, TaskUpdate
 from app.repositories.base import SQLAlchemyRepository
 

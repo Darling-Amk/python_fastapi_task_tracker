@@ -1,7 +1,7 @@
 from pydantic import EmailStr
 from sqlalchemy import select
 
-from app.api.models import User
+from app.api.models.user import User
 from app.auth.schemas.user_auth_schema import UserAuth
 from app.db import async_session
 from app.repositories import UserRepository

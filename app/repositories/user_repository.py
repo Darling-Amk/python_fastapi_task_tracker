@@ -2,7 +2,7 @@ from pydantic import EmailStr
 from sqlalchemy import select
 
 from app.api.exceptions import UserNotFoundError
-from app.api.models import User
+from app.api.models.user import User
 from app.api.schemas.user_schema import UserRead, UserCreate, UserUpdate
 from app.db import async_session
 from app.repositories.base import SQLAlchemyRepository

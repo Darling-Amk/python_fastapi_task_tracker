@@ -10,7 +10,6 @@
 ## Stack
 - FastApi
 - PostgreSQL (Основная бд)
-- Redis (Бд для кэширования)
 - Docker (Сборка и развертывание приложения)
 
 ## Фичи
@@ -43,5 +42,4 @@ PG__PASSWORD=backend
 PG__HOST="127.0.0.1"
 PG__PORT=5432
 PG__DB=task_tracker
-
 ```

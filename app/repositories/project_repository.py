@@ -1,9 +1,6 @@
-from sqlalchemy import select
-
 from app.api.exceptions.project_errors import ProjectNotFoundError
-from app.api.models import Project
+from app.api.models.project import Project
 from app.api.schemas.project_schema import ProjectCreate, ProjectRead
-from app.db import async_session
 from app.repositories.base import SQLAlchemyRepository
 
 
